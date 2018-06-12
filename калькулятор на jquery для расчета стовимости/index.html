@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Калькулятор</title>
+
+ 
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+   
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="powerange.min.css">
+
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="container">
+            <div class="calc">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="calc-programs">
+                            <div class="calc-programs-radio">
+                                <input type="radio" data-month="6" data-per="0.2" name="programs" id="first">
+                                <label for="first">
+
+                                    <span>20% годовых<small>на 6 месяцев</small></span>
+
+                                </label>
+
+                            </div>
+                            <!--calc radio-->
+                            <div class="calc-programs-radio">
+                                <input type="radio" data-month="12" data-per="0.24" name="programs" id="second">
+
+                                <label for="second">
+
+                                    <span>
+	                              24% годовых
+	                              <small>на 1 год</small> 
+	                           </span>
+
+                                </label>
+                                <!--	                           calc radio-->
+                            </div>
+                            <div class="calc-programs-radio">
+                                <input type="radio" data-month="24" data-per=".026" name="programs" id="third">
+                                <label for="third">
+
+                                    <span>
+	                              26% годовых
+	                              <small>на 2 год</small> 
+	                           </span>
+
+                                </label>
+                                <!--	                           calc radio-->
+                            </div>
+                            <div class="calc-programs-radio">
+
+                                <input type="radio" data-month="36" data-per="0.28" name="programs" id="fourth">
+
+                                <label for="fourth">
+
+                                    <span>
+	                              28% годовых
+	                              <small>на 3 год</small> 
+	                           </span>
+
+                                </label>
+                                <!--	                           calc radio-->
+                            </div>
+
+                            <div class="calc-programs-radio">
+                                <input type="radio" data-month="48" data-per="0.32" name="programs" id="fifth">
+                                <label for="fifth">
+
+                                    <span>
+	                              32% годовых
+	                              <small>на 5 год</small> 
+	                           </span>
+
+                                </label>
+                                <!--	                           calc radio-->
+                            </div>
+
+                        </div>
+                    </div>
+                    <!-- /.col-md-6 -->
+                    <div class="col-md-6">
+						<div class="wrap_info">
+                        <h4>Сумма инвестиций</h4>
+                        <input type="text"  class="calc-range" name="summ">
+                        <div class="calc-summ_invest">
+                            <span class="calc-summ_invest_label">Сумма:</span>
+                            <span class="calc-summ_invest_num"><span>120000</span></span>
+                        </div>
+
+                        <div class="">
+                            <span class="calc-total">
+	               			<strong><span id="total">110 000</span>rub</strong><br>
+	               			<small>Cумма через <span id="month">36</span> месяцев</small>
+	               		</span>
+
+	               		<span class="calc-monthly">
+	               			<strong><span></span>rub</strong><br>
+	               			<small>Ежемесячний доход</small>
+	               		</span>
+
+                        </div>
+                    </div>
+                    </div>
+                    <!-- /.col-md-6 -->
+                </div>
+                <!-- /.row -->
+            </div>
+        </div>
+    </div>
+
+
+	
+   
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>    
+ <script src="powerange.min.js"></script>
+
+
+<!-- powerrange -->
+ <script type="text/JavaScript">
+ 	// инициализация перемених
+
+ 	//init powerange
+   var elem = document.querySelector('.calc-range');
+	var init = new Powerange(elem, { min: 100000, max: 3000000, start: 100000, hideRange:true, step:100000 });
+    
+   // мои перемение
+    var per, month, result, total, monthly;
+    var money = +$('.calc-range').val();
+
+
+	// расчет денег
+	$('input[name=programs]').on('change',function(event){
+		// console.log('Количество месяцев:' + $(this).attr('data-month'));
+		// console.log('Проценти:' + $(this).attr('data-per'));
+		month = +$(this).attr('data-month');
+		per = +$(this).attr('data-per');
+		result = Math.round(per / 12 * month * money);
+		total = result + money;
+		monthly = parseInt(result / month);
+		$('#total').text(total.toString().replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1 '));
+		$('.calc-monthly span').text(monthly.toString().replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1 '));
+		$('#month').text(month);
+		
+	});
+
+
+
+	//считиване ползунка - передача значения 
+	$('.calc-range').on('change', function(event) {
+		$('.calc-summ_invest_num span').text($(this).val().replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1 '))//реглярное выражение
+		var radio = $('input[name=programs]:checked');
+		money = +$(this).val();
+		month = +radio.attr('data-month');
+		per = +radio.attr('data-per');
+		result = Math.round(per / 12 * month * money);
+		total = result + money;
+		monthly = parseInt(result / month);
+		$('#total').text(total.toString().replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1 '));
+		$('.calc-monthly span').text(monthly.toString().replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1 '));
+		
+	});
+
+
+  </script>
+
+</body>
+
+
+
+
+</html>

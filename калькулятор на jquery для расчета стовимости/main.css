@@ -1,0 +1,83 @@
+body {
+  background: rgba(0, 0, 0, 0.3); }
+
+label {
+  cursor: default !important; }
+
+.wrapper {
+  height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center; }
+
+.calc .calc-programs {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  border-radius: 5px;
+  margin-top: 2rem;
+  padding: 20px; }
+
+.calc .calc-programs-radio {
+  -ms-flex-preferred-size: 50%;
+  flex-basis: 50%; }
+  .calc .calc-programs-radio label:before {
+    content: "";
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    -webkit-box-shadow: 0 5px 10px rgba(0, 0, 1, 0.1);
+    box-shadow: 0 5px 10px rgba(0, 0, 1, 0.1);
+    background: #fff;
+    border: 6px solid #fff;
+    border-radius: 50%;
+    vertical-align: middle;
+    margin-bottom: 20px;
+    -webkit-transition: .3s;
+    -o-transition: .3s;
+    transition: .3s;
+    -webkit-transform: translatey(0.5rem);
+    -ms-transform: translatey(0.5rem);
+    transform: translatey(0.5rem); }
+  .calc .calc-programs-radio small {
+    display: block;
+    margin-left: 28px;
+    font-size: 10px; }
+  .calc .calc-programs-radio input[type="radio"] {
+    display: none; }
+    .calc .calc-programs-radio input[type="radio"]:checked + label::before {
+      background: #00a8ff;
+      border: 6px solid #fff; }
+
+.calc .wrap_info {
+  margin-top: 2rem; }
+  .calc .wrap_info h4 {
+    margin-bottom: 2rem; }
+
+.calc .calc-summ_invest {
+  margin-bottom: 20px;
+  margin-top: 2rem; }
+
+.calc .calc-summ_invest_num {
+  display: inline-block;
+  background: #fff;
+  padding: 10px 38px; }
+
+.calc .calc-total {
+  display: inline-block;
+  padding: 10px 48px;
+  background: #fff; }
+  .calc .calc-total small {
+    font-size: 10px; }
+  .calc .calc-total strong {
+    font-size: 18px;
+    color: #00a8ff; }
+
+.calc .calc-monthly {
+  display: inline-block; }

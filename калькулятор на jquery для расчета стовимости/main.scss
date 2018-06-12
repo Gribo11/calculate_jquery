@@ -1,0 +1,99 @@
+body {
+    background: rgba(0, 0, 0, .3);
+}
+
+label {
+    cursor: default!important;
+}
+
+.wrapper{
+height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+.calc {
+    .calc-programs {
+        display: flex;
+        flex-wrap: wrap;
+        border: 1px solid rgba(0, 0, 0, .5);
+        border-radius: 5px;
+        margin-top: 2rem;
+        padding: 20px;
+    }
+
+    .calc-programs-radio {
+        flex-basis: 50%;
+
+        label:before {
+            content: "";
+            display: inline-block;
+            width: 24px;
+            height: 24px;
+            box-shadow: 0 5px 10px rgba(0, 0, 1, .1);
+            background: #fff;
+            border: 6px solid #fff;
+            border-radius: 50%;
+            vertical-align: middle;
+            margin-bottom: 20px;
+            transition: .3s;
+            transform: translatey(0.5rem);
+        }
+
+        small {
+            display: block;
+            margin-left: 28px;
+            font-size: 10px;
+        }
+
+        input[type="radio"] {
+            display: none;
+
+            &:checked {
+
+                &+label::before {
+                    background: #00a8ff;
+                    border: 6px solid #fff;
+                }
+            }
+        }
+    }
+
+    .wrap_info {
+        margin-top: 2rem;
+
+        h4{
+        	margin-bottom: 2rem;
+        }
+    }
+
+    .calc-summ_invest {
+        margin-bottom: 20px;
+            margin-top: 2rem;
+    }
+
+    .calc-summ_invest_num {
+        display: inline-block;
+        background: #fff;
+        padding: 10px 38px;
+    }
+
+    .calc-total {
+        display: inline-block;
+        padding: 10px 48px;
+        background: #fff;
+
+        small {
+            font-size: 10px;
+        }
+
+        strong {
+            font-size: 18px;
+            color: #00a8ff;
+        }
+    }
+
+    .calc-monthly {
+        display: inline-block;
+    }
+}
